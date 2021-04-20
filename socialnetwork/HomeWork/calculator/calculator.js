@@ -4,24 +4,24 @@ var enternumber = '';
 function AddChar(symbol){
     switch (symbol)
     {
-        case '+' : SubTotal(); symbols = '+'; break;
-        case '-' : SubTotal(); symbols = '-'; break;
-        case '*' :  SubTotal();symbols = '*'; break;
-        case '/' : SubTotal(); symbols = '/'; break;
-        case '=' : SubTotal();break;
+        case '+' : SubTotal(); symbols = '+'; enterIfnomationIfFrontEnd(symbol);break;
+        case '-' : SubTotal(); symbols = '-'; enterIfnomationIfFrontEnd(symbol);break;
+        case '*' :  SubTotal();symbols = '*';enterIfnomationIfFrontEnd(symbol); break;
+        case '/' : SubTotal(); symbols = '/';enterIfnomationIfFrontEnd(symbol); break;
+        case '=' : Final();break;
         case 'C' : DeleteAllINFo(); break;
         default:
             enternumber+=symbol;
+            enterIfnomationIfFrontEnd(symbol);
             break;
     }
-    enterIfnomationIfFrontEnd(symbol);
 }
 function DeleteAllINFo()
 {
     subtotal = 0 ;
     symbols = '';
     enternumber ='';
-    document.getElementById("#info").innerHTML = "";
+    document.getElementById("info").innerHTML = "";
 }
 function SubTotal(){
     if(enternumber === ''){
@@ -35,15 +35,14 @@ function SubTotal(){
         case '/' :  subtotal /= parseInt(enternumber); break;
     }
     enternumber = '';
-    console.log(subtotal);
+}
+function Final()
+{
+    SubTotal();
+    document.getElementById("info").innerHTML = subtotal;
+    
 }
 function enterIfnomationIfFrontEnd(symbol)
 {
-   document.getElementById("#info").innerHTML +=  symbol;
+   document.getElementById("info").innerHTML  +=  symbol;
 }
-
-var obekt1 = {naem : "test" , age : 34}
-var test = [];
-test.push();
-
-for(var i= 0 ; i < 4 ; i++){}
